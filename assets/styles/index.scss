@@ -1,2 +1,66 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+$background-color: #fff;
+$font-color: #dfdfdf;
+$white: #fff;
+$grey: #808080;
+$button-form-width: 150px;
+$color-lime: #cddc39;
+$action-button: #00e676;
+$background-color-hover: #00c853;
+
+body {
+  background-color: $background-color;
+  color: $font-color;
+}
+
+.style-main-header {
+  color: $color-lime;
+  text-align: center;
+}
+
+.nav-style {
+  border-color: $white;
+}
+
+
+.box {
+  border: 5px solid $color-lime;
+}
+
+div .col-xs-4 {
+  background-color: $color-lime;
+  border: 5px solid $color-lime;
+  color: $color-lime;
+  height: 100px;
+  margin: 2px;
+  width: 100px;
+}
+
+div .col-xs-4:hover {
+  background-color: #d4e157;
+}
+
+.button-form {
+  width: $button-form-width;
+}
+
+.action-button {
+  background-color: $action-button;
+  border-color: $white;
+  color: $white;
+}
+
+.action-button:hover {
+  background-color: $background-color-hover;
+  border-color: $white;
+}
+
+a {
+  color: $white;
+}
+
+form {
+  border-color: $white;
+}

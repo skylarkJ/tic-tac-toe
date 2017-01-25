@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic Tac Toe Game</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags unless you know what you are doing -->
@@ -11,15 +11,202 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body class="container-fluid">
-      <h1>Example</h1>
+    <body>
+      <h1 class="style-main-header">Welcome to the playful world</h1>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!--<a class="navbar-brand" href="#">Brand</a>-->
+          </div>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
-    </body>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse nav-style" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+              <!--<li><a href="#">Link</a></li>-->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <button type="button" class="btn btn-primary action-button" data-toggle="modal" data-target="#myModal">Modal</button>
+            <ul class="nav navbar-nav navbar-right action-button">
+              <!--<li><a href="#">Link</a></li>-->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
+      <div class="jumbotron">
+      <div class="container">
+
+        <!-- Try making an evenly spaced 3x3 grid. -->
+        <div class="row">
+          <div class="col-xs-4 col-ms-4 col-l-4 box"></div>
+          <div class="col-xs-4 col-ms-4 col-l-4 box"></div>
+          <div class="col-xs-4 col-ms-4 col-l-4 box"></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-ms-4 col-l-4 box"></div>
+          <div class="col-xs-4 col-ms-4 col-l-4 box"></div>
+          <div class="col-xs-4 col-ms-4 col-l-4 box"></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4 col-ms-4 col-l-4 box"></div>
+          <div class="col-xs-4 col-ms-4 col-l-4 box"></div>
+          <div class="col-xs-4 col-ms-4 col-l-4 box"></div>
+        </div>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSignUp" data-whatever="@mdo">Sign Up</button>
+        <!-- Modal Sign Up-->
+        <div class="modal fade" id="modalSignUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <!--<h4 class="modal-title" id="myModalLabel">Sign Up</h4>-->
+              </div>
+              <div class="modal-body">
+                 <form id="sign-up">
+                   <fieldset>
+                     <legend>Sign Up</legend>
+                     <label>
+                       Email
+                       <input type="text" class="form-control" name="credentials[email]">
+                     </label><br>
+                     <label>
+                       Password
+                       <input type="password" class="form-control" name="credentials[password]">
+                     </label><br>
+                     <label>
+                       Password Confirmation
+                       <input type="password" class="form-control" name="credentials[password_confirmation]">
+                     </label>
+
+                     <input type="submit" class="form-control button-form" name="submit" value="Sign Up">
+                   </fieldset>
+                 </form>
+               </div> <!-- End of modal body -->
+             </div> <!-- modal-content -->
+           </div> <!-- modal-dialog -->
+         </div> <!-- End of modalSignUp -->
+
+
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSignIn" data-whatever="@mdo">Sign In</button>
+        <!-- Modal Sign In-->
+        <div class="modal fade" id="modalSignIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <!--<h4 class="modal-title" id="myModalLabel">Sign In</h4>-->
+              </div>
+              <div class="modal-body">
+                 <form id="sign-in">
+                   <fieldset>
+                     <legend>Sign In</legend>
+                     <label>
+                       Email
+                       <input type="text" class="form-control" name="credentials[email]">
+                     </label><br>
+                     <label>
+                       Password
+                       <input type="password" class="form-control" name="credentials[password]">
+                     </label>
+
+                     <input type="submit" class="form-control button-form" name="submit" value="Sign In">
+                   </fieldset>
+                 </form>
+               </div> <!-- End of modal body -->
+             </div> <!-- modal-content -->
+           </div> <!-- modal-dialog -->
+         </div> <!-- End of modalSignIn -->
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalChangePassword" data-whatever="@mdo">Change Password</button>
+        <!-- Modal Change Password -->
+        <div class="modal fade" id="modalChangePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <!--<h4 class="modal-title" id="myModalLabel">Change Password</h4>-->
+              </div>
+              <div class="modal-body">
+
+               <form id="change-password">
+                 <fieldset>
+                   <legend>Change Password</legend>
+                   <label>
+                     Current Password
+                     <input type="password" class="form-control" name="password[old]">
+                   </label><br>
+                   <label>
+                     New Password
+                     <input type="password" class="form-control" name="password[new]">
+                   </label>
+
+                   <input type="submit"  class="form-control button-form" name="submit" value="Change Password">
+                 </fieldset>
+               </form>
+
+             </div> <!-- End of modal body -->
+           </div> <!-- modal-content -->
+         </div> <!-- modal-dialog -->
+       </div> <!-- End of modalChangePassword -->
+
+
+        <!-- Modal Sign Out -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSignOut" data-whatever="@mdo">Sign Out</button>
+
+        <div class="modal fade" id="modalSignOut" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <!--<h4 class="modal-title" id="myModalLabel">Sign Out</h4>-->
+              </div>
+              <div class="modal-body">
+
+
+               <form id="sign-out" id="form-group">
+                 <fieldset>
+                   <legend>Sign Out</legend>
+                   <input type="submit" name="submit"  class="form-control button-form" value="Sign Out">
+                 </fieldset>
+               </form>
+
+             </div> <!-- End of modal body -->
+           </div> <!-- modal-content -->
+         </div> <!-- modal-dialog -->
+       </div> <!-- End of modalSignOut -->
+
+      </div> <!-- container -->
+    </div> <!-- jumbotron -->
+  </body>
 </html>
