@@ -7,23 +7,26 @@ $white: #fff;
 $grey: #808080;
 $button-form-width: 150px;
 $color-lime: #cddc39;
-$action-button: #00e676;
-$background-color-hover: #00c853;
+$color-green: #00e676;
+$color-hover: #00c853;
 
 body {
-  background-color: $background-color;
   color: $font-color;
 }
 
-.style-main-header {
+#style-nav {
+  border: $white;
+}
+
+  .style-main-header {
   color: $color-lime;
   text-align: center;
-}
+  }
 
-.nav-style {
-  border-color: $white;
+#center-tiles{
+margin: 0 auto;
+max-width: 300px;
 }
-
 
 .box {
   border: 5px solid $color-lime;
@@ -46,16 +49,90 @@ div .col-xs-4:hover {
   width: $button-form-width;
 }
 
-.action-button {
-  background-color: $action-button;
-  border-color: $white;
-  color: $white;
-}
 
-.action-button:hover {
-  background-color: $background-color-hover;
-  border-color: $white;
-}
+  #button-password{
+    margin-top: 10px;
+    background: $color-green;
+    border-color: $white;
+  }
+
+  #button-signup-nav {
+    margin-top: 8px;
+    background: $color-green;
+    border-color: $white;
+  }
+
+  #button-signin-nav {
+    margin-top: 8px;
+    background: $color-green;
+    border-color: $white;
+  }
+
+  #button-signout-nav {
+    margin-top: 8px;
+    background: $color-green;
+    border-color: $white;
+  }
+
+  #button-password:hover{
+    background: $color-hover;
+    border-color: $white;
+  }
+
+  #button-signup-nav:hover {
+    background: $color-hover;
+    border-color: $white;
+  }
+
+  #button-signin-nav:hover {
+    background: $color-hover;
+    border-color: $white;
+  }
+
+  #button-signout-nav:hover {
+    background: $color-hover;
+    border-color: $white;
+  }
+
+  #style-signup {
+    border: 1px solid $color-green;
+    font-weight: 500;
+  }
+
+  #style-signin {
+    border: 1px solid $color-green;
+    font-weight: 500;
+  }
+
+  #style-changepassword {
+    border: 1px solid $color-green;
+    font-weight: 500;
+  }
+
+  #style-signout {
+    border: 1px solid $color-green;
+    font-weight: 500;
+  }
+
+  #style-signup:hover {
+    background-color: $color-green;
+    font-weight: 500;
+  }
+
+  #style-signin:hover {
+    background-color: $color-green;
+    font-weight: 500;
+  }
+
+  #style-changepassword:hover {
+    background-color: $color-green;
+    font-weight: 500;
+  }
+
+  #style-signout:hover {
+    background-color: $color-green;
+    font-weight: 500;
+  }
 
 a {
   color: $white;
@@ -63,4 +140,9 @@ a {
 
 form {
   border-color: $white;
+}
+
+label {
+  color: grey;
+  margin: 10px 0;
 }
