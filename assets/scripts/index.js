@@ -12,7 +12,13 @@ $(() => {
 
 const authEvents = require('./auth/events.js');
 
+// const gameFile = require('./game.js');
+// const handlersJQ = require('./handlers.js');
+
+
 // On document ready
 $(() => {
   authEvents.addHandlers();
+  // gameFile.addHandlers();
+  // handlersJQ.addHandlers();
 });
