@@ -8,14 +8,14 @@ let playerOWinMoves;
 let playerXResults;
 let playerOResults;
 let winMessage = "You won.";
-let currentPlayer = playerX - playerO;
+let currentPlayer = playerX;
 let turn = 0;
 let content = [];
 
 //Empty state of the game
 let boardPlayerX = [0,0,0,0,0,0,0,0,0];
 let boardPlayerO = [0,0,0,0,0,0,0,0,0];
-let boardPainted = [playerX,0,0,0,0,0,0,0,0];
+let boardPainted = [0,0,0,0,0,0,0,0,0];
 
 const boardPaint = function(){
 
@@ -25,13 +25,29 @@ const boardPaint = function(){
     if (boardPainted[i] === 0){
      htmlBoard[i].innerHTML = '';
    } else if (boardPainted[i] === playerX) {
-      htmlBoard[i].innerHTML = "X";
+      htmlBoard[i].innerHTML = '<img src="assets/img/x.png" alt="x"/>';
     } else {
-      htmlBoard[i].innerHTML = "O";
+      htmlBoard[i].innerHTML = '<img src="assets/img/o.png" alt="o"/>';
     }
 
   }
 };
+
+//player turn
+$('.box').on('click', function(){
+  let boardPosition = $(this).attr('id')[2]; //third position of each id of tile
+    boardPainted[boardPosition] = currentPlayer;
+    if (currentPlayer === playerX) {
+       currentPlayer = playerO;
+    } else {
+       currentPlayer = playerX;
+      }
+    boardPaint();
+});
+
+
+
+
 // boardPaint();
 //
 // //Winning combo
