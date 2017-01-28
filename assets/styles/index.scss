@@ -24,8 +24,8 @@ body {
   }
 
 #center-tiles{
-margin: 0 auto;
-max-width: 300px;
+  margin: 0 auto;
+  max-width: 300px;
 }
 
 .box {
@@ -50,34 +50,34 @@ div .col-xs-4:hover {
 }
 
 
-  #button-password{
+#button-password{
     margin-top: 10px;
     background: $color-green;
     border-color: $white;
-  }
+}
 
-  #button-signup-nav {
+#button-signup-nav {
     margin-top: 8px;
     background: $color-green;
     border-color: $white;
-  }
+}
 
-  #button-signin-nav {
+#button-signin-nav {
     margin-top: 8px;
     background: $color-green;
     border-color: $white;
-  }
+}
 
-  #button-signout-nav {
+#button-signout-nav {
     margin-top: 8px;
     background: $color-green;
     border-color: $white;
-  }
+}
 
-  #button-password:hover{
+#button-password:hover{
     background: $color-hover;
     border-color: $white;
-  }
+}
 
   #button-signup-nav:hover {
     background: $color-hover;
@@ -134,8 +134,27 @@ div .col-xs-4:hover {
     font-weight: 500;
   }
 
+  #button-play {
+    width: 308px;
+    margin-top: 5px;
+    margin-left: -12px;
+    border: 0;
+    border-radius: 0;
+    background-color: $color-green;
+
+  }
+
+  #button-play:hover {
+    background-color: $color-hover;
+
+  }
+
 a {
   color: $white;
+}
+
+.modal-content {
+  width: 250px;
 }
 
 form {
@@ -145,4 +164,9 @@ form {
 label {
   color: grey;
   margin: 10px 0;
+}
+
+img {
+  margin-left: -20px;
+  margin-top: -5px
 }

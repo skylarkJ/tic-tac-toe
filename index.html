@@ -40,22 +40,24 @@
 
         <!-- Try making an evenly spaced 3x3 grid. -->
         <div id="center-tiles">
-        <div class="row">
-          <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-1"></div>
-          <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-2"></div>
-          <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-3"></div>
+          <div class="row">
+            <div id="tile1" class="col-xs-4 col-ms-4 col-l-4 box"><img id="t-1" src="assets/img/o.png" alt="o"/></div>
+            <div class="col-xs-4 col-ms-4 col-l-4 box"><img id="t-2" src="assets/img/x.png" alt="x"/></div>
+            <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-4"></div>
+            <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-5"></div>
+            <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-6"></div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-7"></div>
+            <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-8"></div>
+            <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-9"></div>
+          </div>
+          <button onclick="alert('Hello')" id="button-play" type="button" class="btn btn-primary" data-toggle="" data-target="" data-whatever="@mdo">Play Again</button>
         </div>
-        <div class="row">
-          <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-4"></div>
-          <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-5"></div>
-          <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-6"></div>
-        </div>
-        <div class="row">
-          <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-7"></div>
-          <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-8"></div>
-          <div class="col-xs-4 col-ms-4 col-l-4 box" id="t-9"></div>
-        </div>
-      </div>
+
 
 
 
@@ -175,7 +177,7 @@
               <div class="modal-body">
 
 
-               <form id="sign-out" id="form-group">
+               <form id="sign-out">
                  <fieldset>
                    <legend>Sign Out</legend>
                    <input id="style-signout" type="submit" name="submit"  class="form-control button-form" value="Sign Out">
