@@ -5,17 +5,28 @@ let playerX = "X";
 let playerO = "O";
 let playerXWinMoves;
 let playerOWinMoves;
-let playerXResults;
-let playerOResults;
+let playerXWinGames;
+let playerOWinGames;
 let winMessage = "You won.";
 let currentPlayer = playerX;
-let turn = 0;
-let content = [];
+
 
 //Empty state of the game
 let boardPlayerX = [0,0,0,0,0,0,0,0,0];
 let boardPlayerO = [0,0,0,0,0,0,0,0,0];
 let boardPainted = [0,0,0,0,0,0,0,0,0];
+
+//Winning combo
+let winningCombinations = [
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8],
+  [6,4,2]
+];
 
 const boardPaint = function(){
 
@@ -33,64 +44,75 @@ const boardPaint = function(){
   }
 };
 
+// //Check if the playerX has the slots filled based on one of the winning condition
+const checkForWinner = function () {
+  for (let i = 0; i < winningCombinations.length; i++) {
+    if (boardPlayerX[winningCombinations[i][0]] &&
+        boardPlayerX[winningCombinations[i][1]] &&
+        boardPlayerX[winningCombinations[i][2]]
+     ) {
+
+       return playerX;
+     }
+
+     if (boardPlayerO[winningCombinations[i][0]] &&
+         boardPlayerO[winningCombinations[i][1]] &&
+         boardPlayerO[winningCombinations[i][2]]) {
+
+       return playerO;
+     }
+
+  }
+  return "";
+};
+
+
+//to check if board is full for draw
+const isBoardFull = function () {
+  for (let i = 0; i < boardPainted.length; i++) {
+    if (boardPainted[i] === 0) { //board not full because 0
+      return false;
+    }
+  }
+  return true;
+}
+
 //player turn
 $('.box').on('click', function(){
+
+
   let boardPosition = $(this).attr('id')[2]; //third position of each id of tile
+  if (boardPainted[boardPosition] === 0) {
     boardPainted[boardPosition] = currentPlayer;
     if (currentPlayer === playerX) {
        currentPlayer = playerO;
+       boardPlayerX[boardPosition] = true;
     } else {
        currentPlayer = playerX;
+       boardPlayerO[boardPosition] = true;
       }
     boardPaint();
+    let winner = checkForWinner();
+    if (winner === playerX) {
+      alert('PlayerX you won.');
+    }
+    if (winner === playerO) {
+      alert('PlayerO you won.');
+    }
+
+    //Check for draw
+    if (winner === "" && isBoardFull()) {
+      alert("The game is a draw.");
+    }
+
+  }
 });
 
 
 
 
-// boardPaint();
-//
-// //Winning combo
-// let winningCombinations = [
-//   [0,1,2],
-//   [3,4,5],
-//   [6,7,8],
-//   [0,3,6],
-//   [1,4,7],
-//   [2,5,8],
-//   [0,4,8],
-//   [6,4,2]
-// ];
-//
-// //Player switching
-// if (currentPlayer === playerX) {
-//   return playerX;
-// } else {
-//   return playerO;
-//   }
-//
-// //Check if the playerX has the slots filled based on one of the winning condition
-// const checkForWinner = function (playerX, playerO) {
-//   if (playerX === content[winningCombinations[0]] ||
-//           content[winningCombinations[1]] ||
-//           content[winningCombinations[2]] ||
-//           content[winningCombinations[3]] ||
-//           content[winningCombinations[4]] ||
-//           content[winningCombinations[5]] ||
-//           content[winningCombinations[6]] ||
-//           content[winningCombinations[7]] ||
-//           content[winningCombinations[8]]) {
-//
-//     console.log(playerXWinMoves=playerXWinMoves += playerXWinMoves);
-//     console.log(winMessage);
-//   } else {
-//     console.log(playerOWinMoves=playerOWinMoves += playerOWinMoves);
-//     }
-//
-//     return playerO;
-// };
-// checkForWinner();
-//
+
+
 // //start new game - function
 // const playAgain = function () {
 //   let confirm = "Play again.";
