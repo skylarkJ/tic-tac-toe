@@ -89,5 +89,5 @@ module.exports = {
   myRequest,
   gameStat,
   gameCreate,
-  gameUpdate,
+  gameUpdate
 };
