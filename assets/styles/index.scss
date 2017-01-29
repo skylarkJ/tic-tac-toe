@@ -16,16 +16,20 @@ body {
 
 #style-nav {
   border: $white;
-}
+  }
 
 .style-main-header {
   color: $color-lime;
   text-align: center;
   }
 
-#center-tiles{
+#center-tiles {
   margin: 0 auto;
   max-width: 300px;
+  }
+
+.modal-content {
+  width: 250px;
 }
 
 .box {
@@ -50,111 +54,144 @@ div .col-xs-4:hover {
 }
 
 
-#button-password{
-    margin-top: 10px;
-    background: $color-green;
-    border-color: $white;
-}
+#button-password {
+  background: $color-green;
+  border-color: $white;
+  margin-top: 10px;
+  }
 
 #button-signup-nav {
-    margin-top: 8px;
-    background: $color-green;
-    border-color: $white;
-}
+  margin-top: 8px;
+  background: $color-green;
+  border-color: $white;
+  }
 
 #button-signin-nav {
-    margin-top: 8px;
-    background: $color-green;
-    border-color: $white;
-}
+  background: $color-green;
+  border-color: $white;
+  margin-top: 8px;
+  }
 
 #button-signout-nav {
-    margin-top: 8px;
-    background: $color-green;
-    border-color: $white;
+  background: $color-green;
+  border-color: $white;
+  margin-top: 8px;
+  }
+
+#button-password:hover {
+  background: $color-hover;
+  border-color: $white;
+  }
+
+#button-signup-nav:hover {
+  background: $color-hover;
+  border-color: $white;
+  }
+
+#button-signin-nav:hover {
+  background: $color-hover;
+  border-color: $white;
+  }
+
+#button-signout-nav:hover {
+  background: $color-hover;
+  border-color: $white;
+  }
+
+#style-signup {
+  border: 1px solid $color-green;
+  font-weight: 500;
 }
 
-#button-password:hover{
-    background: $color-hover;
-    border-color: $white;
+#style-signin {
+  border: 1px solid $color-green;
+  font-weight: 500;
 }
 
-  #button-signup-nav:hover {
-    background: $color-hover;
-    border-color: $white;
-  }
+#style-changepassword {
+  border: 1px solid $color-green;
+  font-weight: 500;
+}
 
-  #button-signin-nav:hover {
-    background: $color-hover;
-    border-color: $white;
-  }
+#style-signout {
+  border: 1px solid $color-green;
+  font-weight: 500;
+}
 
-  #button-signout-nav:hover {
-    background: $color-hover;
-    border-color: $white;
-  }
+#style-signup:hover {
+  background-color: $color-green;
+  font-weight: 500;
+}
 
-  #style-signup {
-    border: 1px solid $color-green;
-    font-weight: 500;
-  }
+#style-signin:hover {
+  background-color: $color-green;
+  font-weight: 500;
+}
 
-  #style-signin {
-    border: 1px solid $color-green;
-    font-weight: 500;
-  }
+#style-changepassword:hover {
+  background-color: $color-green;
+  font-weight: 500;
+}
 
-  #style-changepassword {
-    border: 1px solid $color-green;
-    font-weight: 500;
-  }
+#style-signout:hover {
+  background-color: $color-green;
+  font-weight: 500;
+}
 
-  #style-signout {
-    border: 1px solid $color-green;
-    font-weight: 500;
-  }
+.game-board {
+  display: none;
+}
 
-  #style-signup:hover {
-    background-color: $color-green;
-    font-weight: 500;
-  }
+.create-button {
+  background-color: $white;
+  border: 1px solid $color-green;
+  color: $color-green;
+}
 
-  #style-signin:hover {
-    background-color: $color-green;
-    font-weight: 500;
-  }
-
-  #style-changepassword:hover {
-    background-color: $color-green;
-    font-weight: 500;
-  }
-
-  #style-signout:hover {
-    background-color: $color-green;
-    font-weight: 500;
-  }
-
-  #button-play {
-    width: 308px;
-    margin-top: 5px;
-    margin-left: -12px;
-    border: 0;
-    border-radius: 0;
-    background-color: $color-green;
-
-  }
-
-  #button-play:hover {
-    background-color: $color-hover;
-
-  }
-
-a {
+.create-button:hover {
+  background-color: $color-green;
+  border: 1px solid $color-green;
   color: $white;
 }
 
-.modal-content {
-  width: 250px;
+#button-play {
+  background-color: $color-green;
+  border: 0;
+  border-radius: 0;
+  margin-left: -12px;
+  margin-top: 5px;
+  width: 308px;
+  }
+
+#button-play:hover {
+  background-color: $color-hover;
+  }
+
+
+.won-messagex-style {
+  display: none;
+  font-size: 16px;
+}
+
+.won-messageo-style {
+  display: none;
+}
+
+.draw-message-style {
+  display: none;
+}
+
+.jumbotron p {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+p {
+  color: $color-green;
+}
+
+a {
+  color: $white;
 }
 
 form {
@@ -162,11 +199,11 @@ form {
 }
 
 label {
-  color: grey;
+  color: #808080;
   margin: 10px 0;
 }
 
 img {
   margin-left: -20px;
-  margin-top: -5px
+  margin-top: -5px;
 }

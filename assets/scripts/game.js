@@ -1,15 +1,12 @@
 'use strict';
+const api = require('./auth/api');
+const store = require('./store');
 
 //Create a board
 let playerX = "X";
 let playerO = "O";
-let playerXWinMoves;
-let playerOWinMoves;
-let playerXWinGames;
-let playerOWinGames;
-let winMessage = "You won.";
 let currentPlayer = playerX;
-
+let gameId = '';
 
 //Empty state of the game
 let boardPlayerX = [0,0,0,0,0,0,0,0,0];
@@ -27,6 +24,74 @@ let winningCombinations = [
   [0,4,8],
   [6,4,2]
 ];
+
+
+const checksServerWin = function (cells) {
+  let serverX = [0,0,0,0,0,0,0,0,0];
+  let serverO = [0,0,0,0,0,0,0,0,0];
+  for (let i = 0; i < cells.length; i++) {
+    if(cells[i] === "x") {
+      serverX[i] = 1;
+    }
+    if(cells[i] === "o") {
+      serverO[i] = 1;
+    }
+  }
+
+  for (let i = 0; i < winningCombinations.length; i++) {
+    if (serverX[winningCombinations[i][0]] &&
+        serverX[winningCombinations[i][1]] &&
+        serverX[winningCombinations[i][2]]
+     ) {
+
+       return playerX;
+     }
+
+     if (serverO[winningCombinations[i][0]] &&
+         serverO[winningCombinations[i][1]] &&
+         serverO[winningCombinations[i][2]]) {
+
+       return playerO;
+     }
+
+  }
+
+};
+
+$('#create-game').on('click', function () {
+  $( document.activeElement ).css("background-color", "#00e676");
+  $( document.activeElement ).css("color", "#fff");
+  $('.game-board').show();
+
+  if(store.user) {
+
+    api.gameCreate()
+      .then((data) => {
+        gameId = data.game.id;
+      });
+
+    api.gameStat()
+      .then((data) => {
+        let addOne = 0;
+
+
+        for (let i = 0; i < data.games.length; i ++) {
+          let win = checksServerWin(data.games[i].cells);
+          if (store.user.id === data.games[i].player_x.id) {
+            if (win === playerX) {
+              addOne += 1;
+            }
+          }
+
+        }
+        $('#game-stat').text("Wins:" + addOne);
+
+      });
+
+  }
+
+
+});
 
 const boardPaint = function(){
 
@@ -67,6 +132,8 @@ const checkForWinner = function () {
 };
 
 
+
+
 //to check if board is full for draw
 const isBoardFull = function () {
   for (let i = 0; i < boardPainted.length; i++) {
@@ -75,11 +142,13 @@ const isBoardFull = function () {
     }
   }
   return true;
-}
+};
 
 //player turn
 $('.box').on('click', function(){
-
+  let serverData = {
+    game: {over: false},
+  };
 
   let boardPosition = $(this).attr('id')[2]; //third position of each id of tile
   if (boardPainted[boardPosition] === 0) {
@@ -87,63 +156,57 @@ $('.box').on('click', function(){
     if (currentPlayer === playerX) {
        currentPlayer = playerO;
        boardPlayerX[boardPosition] = true;
+       serverData.game.cell = {
+         index:boardPosition,
+         value: "x"
+       };
     } else {
        currentPlayer = playerX;
        boardPlayerO[boardPosition] = true;
-      }
+       serverData.game.cell = {
+         index:boardPosition,
+         value: "o"
+       };
+     }
     boardPaint();
     let winner = checkForWinner();
     if (winner === playerX) {
-      alert('PlayerX you won.');
+      $('#won-messagex').show();
+      serverData.game.over = true;
     }
     if (winner === playerO) {
-      alert('PlayerO you won.');
+      $('#won-messageo').show();
+      serverData.game.over  = true;
     }
 
     //Check for draw
     if (winner === "" && isBoardFull()) {
-      alert("The game is a draw.");
+      $('#draw-message').show();
+      serverData.game.over  = true;
     }
+    api.gameUpdate(gameId, serverData);
 
   }
 });
 
+const resetBoard = function () {
+  //Empty state of the game
+  currentPlayer = playerX;
+  boardPlayerX = [0,0,0,0,0,0,0,0,0];
+  boardPlayerO = [0,0,0,0,0,0,0,0,0];
+  boardPainted = [0,0,0,0,0,0,0,0,0];
+
+  boardPaint();
+};
 
 
-
-
-
-// //start new game - function
-// const playAgain = function () {
-//   let confirm = "Play again.";
-//   if (confirm === true) {
-//     console.log("Yeah, Let's play again.");
-//     return content;
-//   }
-// };
-//
-// //When no winning combination make content array empty -ready for a new game
-// const gameOver = function (content) {
-//   for (let i = 0; i < 8; i++) {
-//     if (content[winningCombinations[i]] === false) {
-//     content = [];
-//     }
-//   }
-//   return playAgain();
-// };
-// gameOver();
-//
-//
-// //How to store result of each player
-// const score = function () {
-//   if (playerXWinMoves) {
-//     playerXResults = "Your score is " + playerXWinMoves + " winning games";
-//   } else {
-//     playerOResults = "Your score is " + playerOWinMoves + " winning games";
-//   }
-// };
-// score();
-
+//reset the board
+$('#button-play').on('click', function(){
+  resetBoard();
+  $('#won-messagex').hide();
+  $('#won-messageo').hide();
+  $('#draw-message').hide();
+});
 
 module.exports = {
   boardPaint
