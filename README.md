@@ -43,13 +43,26 @@ The next I moved to js bin to create in their js file some pseudocode and starte
 For my code I created game.js:
 1. I created couple of global variables to be able to access them from the scope of any function.
 2. Then I made 3 arrays - one for each player and one for a board itself to catch the state before turn and after turn - I gave to an initial state 0 if the place was picked then 1.
-3. To check for a winner - it went two ways - one in the javaScript - the function is called checkForWinner and other for the server - the function is called checksServerWin. The interesting part is on the server that I am accessing the places in the arrays with json property called cells. To not mess around with results in javaScript I am using own local arrays for each player for the server check. I am looping through both arrays in the same time while storing through if statements for each player the marks at their own array placeholder. This stores each turns for both players but then I had to check for winning combo. I used for it another for loop and ran it through the global array of winningCombinations. [i] is the index of which combination is currently being checked. [0] checking just a slot in the combination and seeing if its filled in serverX. 
+3. To check for a winner - it went two ways - one in the javaScript - the function is called checkForWinner and other for the server - the function is called checksServerWin. The interesting part is on the server that I am accessing the places in the arrays with json property called cells. To not mess around with results in javaScript I am using own local arrays for each player for the server check. I am looping through both arrays in the same time while storing through if statements for each player the marks at their own array placeholder. This stores each turns for both players but then I had to check for winning combo. I used for it another for loop and ran it through the global array of winningCombinations. [i] is the index - outer layer of which combination is currently being checked. [0] - inner layer checking just a slot in the combination and seeing if its filled in serverX. Same idea goes for javaScript side. Except if if no player wins then it returns empty board.
+4. To check if boardPainted is full - I called the function isBoardFull. If boardPainted === 0 it means that a player hasn't moved there and the output will return false.
+5. Then I created a player move - Using jQuery with parent .box which is wrapping all tiles together. Each tile has an id similar to positions - t-0, t-1, etc.. I use jQuery attribute method like this $(this).attr('id')[2]; This is for the .box. [2] is a third position of the id character so anytime clicked the whole .box it will loop through the ids. I simplified it and stored it into a variable let boardPosition = $(this).attr('id')[2]; Using json to store the moves on the server like this:
+serverData.game.cell = {
+  index:boardPosition,
+  value: "x"
+};
+Then I called the function boardPaint(); To start to create messages according to who won or draw.
 
+6. Finally after we know how the game ends we can call the function called resetBoard(); which happends on click when action on the button "play again". The real reset of the board happends when just putting again initial states with zeros of each array for a playerX, playerO and boardPainted.
 
+For API:
+I have used https://github.com/ga-wdi-boston/game-project-api
+1. I created in api.js - function gameStat, gameCreate and gameUpdate - using GET, POST, PATCH. I was then referencing them in my game.js
+2. The gameUpdate stores the number of wins for a playerX. - The user needs to be sign in first to have stored results of the game on the server.
+3. The player needs to sign up first.
 
+I would like to make better the tiles marking - there would be nice some animation, also music in the background with option to turn off would be cool too. Another feature could be uploading images of the users to make it more personal. And a chatting table to keep users longer time around.
 
-
-
+Overall I liked the process to get a chance to have hands of code for a fully functional web application from the beginning to the end.
 
 ## [License](LICENSE)
 

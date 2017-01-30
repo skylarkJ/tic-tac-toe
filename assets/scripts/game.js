@@ -100,9 +100,9 @@ const boardPaint = function(){
     if (boardPainted[i] === 0){
      htmlBoard[i].innerHTML = '';
    } else if (boardPainted[i] === playerX) {
-      htmlBoard[i].innerHTML = '<img src="https://www.dropbox.com/s/u7v8h33wt54evy9/X.png?dl=0" alt="x"/>';
+      htmlBoard[i].innerHTML = '<img src="assets/img/x.png" alt="x"/>';
     } else {
-      htmlBoard[i].innerHTML = '<img src="https://www.dropbox.com/s/hmjrgedzzkvd1pi/O.png?dl=0" alt="o"/>';
+      htmlBoard[i].innerHTML = '<img src="assets/img/o.png" alt="o"/>';
     }
 
   }
