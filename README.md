@@ -25,6 +25,9 @@ I worked only in assets and a spec folder.
 A started with wireframe of what my game project should look like.
 https://goo.gl/photos/QaAZUKXRLb7NMYw46
 
+User Stories
+https://www.evernote.com/l/AUAeLys-Nx1Af41GF7OqKDre05zktK_L8w4
+
 A code on GitHub
 https://github.com/skylarkJ/tic-tac-toe/tree/feature
 
