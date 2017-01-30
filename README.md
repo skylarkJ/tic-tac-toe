@@ -38,7 +38,12 @@ I started with breaking tasks at Trello board into "to do" "doing" "done" catego
 
 Then I dived into a modeling of the game to realize what needs to happen to have the game fully functional. The most important part I got from it that I don't need to treat the board as a grid 3x3 rather as an array of 9 positions which can be in one row. So to target one position I don't need a number of a row and a column. What we are seeing with an eye the computer doesn't care - it just declares as a line of numbers from 0 to 8. Also, I needed to take a tile as an empty placeholder and work with it for the conditions for winning between to players this way.
 
-Then I moved to js bin to create in their js file some pseudocode and started the logical code. I don't like to work with Atom editor at the beginning of the process because popping out errors are disrupting me. I have several errors when I migrated my code from js bin to atom but it was a worthy lesson to trouble shoot it. At the end of the day I was proud that I have finished it.
+The next I moved to js bin to create in their js file some pseudocode and started the logical code. I don't like to work with Atom editor at the beginning of the process because popping out errors are disrupting me. I have several errors when I migrated my code from js bin to atom but it was a worthy lesson to trouble shoot it. At the end of the day I was proud that I have finished it.
+
+For my code I created game.js:
+1. I created couple of global variables to be able to access them from the scope of any function.
+2. Then I made 3 arrays - one for each player and one for a board itself to catch the state before turn and after turn - I gave to an initial state 0 if the place was picked then 1.
+3. To check for a winner - it went two ways - one in the javaScript - the function is called checkForWinner and other for the server - the function is called checksServerWin. The interesting part is on the server that I am accessing the places in the arrays with json property called cells. To not mess around with results in javaScript I am using own local arrays for each player for the server check. I am looping through both arrays in the same time while storing through if statements for each player the marks at their own array placeholder. This stores each turns for both players but then I had to check for winning combo. I used for it another for loop and ran it through the global array of winningCombinations. [i] is the index of which combination is currently being checked. [0] checking just a slot in the combination and seeing if its filled in serverX. 
 
 
 

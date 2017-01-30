@@ -41,8 +41,7 @@ const checksServerWin = function (cells) {
   for (let i = 0; i < winningCombinations.length; i++) {
     if (serverX[winningCombinations[i][0]] &&
         serverX[winningCombinations[i][1]] &&
-        serverX[winningCombinations[i][2]]
-     ) {
+        serverX[winningCombinations[i][2]]) {
 
        return playerX;
      }
@@ -101,9 +100,9 @@ const boardPaint = function(){
     if (boardPainted[i] === 0){
      htmlBoard[i].innerHTML = '';
    } else if (boardPainted[i] === playerX) {
-      htmlBoard[i].innerHTML = '<img src="http://imgur.com/a/Vz1rW" alt="x"/>';
+      htmlBoard[i].innerHTML = '<img src="https://www.dropbox.com/s/u7v8h33wt54evy9/X.png?dl=0" alt="x"/>';
     } else {
-      htmlBoard[i].innerHTML = '<img src="http://imgur.com/a/PHmb8" alt="o"/>';
+      htmlBoard[i].innerHTML = '<img src="https://www.dropbox.com/s/hmjrgedzzkvd1pi/O.png?dl=0" alt="o"/>';
     }
 
   }
