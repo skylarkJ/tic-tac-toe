@@ -101,9 +101,9 @@ const boardPaint = function(){
     if (boardPainted[i] === 0){
      htmlBoard[i].innerHTML = '';
    } else if (boardPainted[i] === playerX) {
-      htmlBoard[i].innerHTML = '<img src="assets/img/x.png" alt="x"/>';
+      htmlBoard[i].innerHTML = '<img src="http://imgur.com/a/Vz1rW" alt="x"/>';
     } else {
-      htmlBoard[i].innerHTML = '<img src="assets/img/o.png" alt="o"/>';
+      htmlBoard[i].innerHTML = '<img src="http://imgur.com/a/PHmb8" alt="o"/>';
     }
 
   }
