@@ -100,9 +100,9 @@ const boardPaint = function(){
     if (boardPainted[i] === 0){
      htmlBoard[i].innerHTML = '';
    } else if (boardPainted[i] === playerX) {
-      htmlBoard[i].innerHTML = '<img src="assets/img/x.png" alt="x"/>';
+      htmlBoard[i].innerHTML = '<img src="http://janaryndin.com/img/x.png" alt="x"/>';
     } else {
-      htmlBoard[i].innerHTML = '<img src="assets/img/o.png" alt="o"/>';
+      htmlBoard[i].innerHTML = '<img src="http://janaryndin.com/img/o.png" alt="o"/>';
     }
 
   }
