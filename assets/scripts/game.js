@@ -61,34 +61,42 @@ $('#create-game').on('click', function () {
   $( document.activeElement ).css("background-color", "#00e676");
   $( document.activeElement ).css("color", "#fff");
   $('.game-board').show();
-
-  if(store.user) {
-
-    api.gameCreate()
-      .then((data) => {
-        gameId = data.game.id;
-      });
-
-    api.gameStat()
-      .then((data) => {
-        let addOne = 0;
+  $('#create-game').hide();
+});
 
 
-        for (let i = 0; i < data.games.length; i ++) {
-          let win = checksServerWin(data.games[i].cells);
-          if (store.user.id === data.games[i].player_x.id) {
-            if (win === playerX) {
-              addOne += 1;
+
+$('#game-stat').on('click', function () {
+  $('.game-score').show();
+  $('#game-stat').hide();
+
+
+    if(store.user) {
+
+      api.gameCreate()
+        .then((data) => {
+          gameId = data.game.id;
+        });
+
+      api.gameStat()
+        .then((data) => {
+          let addOne = 0;
+
+
+          for (let i = 0; i < data.games.length; i ++) {
+            let win = checksServerWin(data.games[i].cells);
+            if (store.user.id === data.games[i].player_x.id) {
+              if (win === playerX) {
+                addOne += 1;
+              }
             }
+
           }
+          $('.game-score').text("Wins: " + addOne);
 
-        }
-        $('#game-stat').text("Wins:" + addOne);
+        });
 
-      });
-
-  }
-
+    }
 
 });
 
@@ -107,6 +115,7 @@ const boardPaint = function(){
 
   }
 };
+
 
 // //Check if the playerX has the slots filled based on one of the winning condition
 const checkForWinner = function () {
@@ -128,6 +137,7 @@ const checkForWinner = function () {
 
   }
   return "";
+
 };
 
 
@@ -150,6 +160,7 @@ $('.box').on('click', function(){
   };
 
   let boardPosition = $(this).attr('id')[2]; //third position of each id of tile
+  //let actionStop;
   if (boardPainted[boardPosition] === 0) {
     boardPainted[boardPosition] = currentPlayer;
     if (currentPlayer === playerX) {
@@ -167,12 +178,14 @@ $('.box').on('click', function(){
          value: "o"
        };
      }
+    //return actionStop === false;
     boardPaint();
     let winner = checkForWinner();
     if (winner === playerX) {
       $('#won-messagex').show();
       serverData.game.over = true;
     }
+
     if (winner === playerO) {
       $('#won-messageo').show();
       serverData.game.over  = true;

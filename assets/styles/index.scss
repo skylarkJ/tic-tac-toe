@@ -78,6 +78,7 @@ div .col-xs-4:hover {
   margin-top: 8px;
   }
 
+
 #button-password:hover {
   background: $color-hover;
   border-color: $white;
@@ -97,6 +98,14 @@ div .col-xs-4:hover {
   background: $color-hover;
   border-color: $white;
   }
+
+.style-button-password {
+  display: none;
+}
+
+.style-button-signout {
+  display: none;
+}
 
 #style-signup {
   border: 1px solid $color-green;
@@ -167,18 +176,39 @@ div .col-xs-4:hover {
   background-color: $color-hover;
   }
 
+#game-stat {
+  background-color: #00e676;
+  border: 0;
+  border-radius: 0;
+  color: $white;
+  margin-left: -12px;
+  margin-bottom: -10px;
+  width: 308px;
+}
+
+#game-stat:hover {
+  background-color: $color-hover;
+  }
+
+.game-score {
+  margin-top: 15px;
+  margin-left: - 10px;
+}
 
 .won-messagex-style {
   display: none;
   font-size: 16px;
+  margin-left: -10px;
 }
 
 .won-messageo-style {
   display: none;
+  margin-left: -10px;
 }
 
 .draw-message-style {
   display: none;
+  margin-left: -10px;
 }
 
 .jumbotron p {

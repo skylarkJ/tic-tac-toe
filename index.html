@@ -30,7 +30,9 @@
 
             <button id="button-signup-nav" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSignUp" data-whatever="@mdo">Sign Up</button>
             <button id="button-signin-nav" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSignIn" data-whatever="@mdo">Sign In</button>
-            <button id="button-signout-nav" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSignOut" data-whatever="@mdo">Sign Out</button>
+            <button id="button-signout-nav" type="button" class="style-button-signout btn btn-primary" data-toggle="modal" data-target="#modalSignOut" data-whatever="@mdo">Sign Out</button>
+            <button id="button-password" type="button" class="style-button-password btn btn-primary" data-toggle="modal" data-target="#modalChangePassword" data-whatever="@mdo">Change Password</button>
+
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
@@ -42,7 +44,10 @@
 
         <button id="create-game" type="button" class="btn btn-primary create-button" data-toggle="" data-target="" data-whatever="@mdo">Create Game</button>
         <div id="center-tiles" class="game-board">
-          <div><p id="game-stat">Wins</p></div>
+
+        <button id="game-stat" type="button" class="btn btn-primary create-button" data-toggle="" data-target="" data-whatever="@mdo">Game Count for Player X</button>
+        <div><p class="game-score"></p></div>
+
           <div><p id="won-messagex" class="won-messagex-style">PlayerX you won. Press play again.</p></div>
           <div><p id="won-messageo" class="won-messageo-style">PlayerO you won. Press play again.</p></div>
           <div><p id="draw-message" class="draw-message-style">The game is a draw. Press play again.</p></div>
@@ -76,7 +81,7 @@
                 <!--<h4 class="modal-title" id="myModalLabel">Sign Up</h4>-->
               </div>
               <div class="modal-body">
-                 <form id="sign-up">
+                 <form id="sign-up" class="sign-up">
                    <fieldset>
                      <legend>Sign Up</legend>
                      <label>
@@ -92,7 +97,7 @@
                        <input type="password" class="form-control" name="credentials[password_confirmation]">
                      </label>
 
-                     <input id="style-signup" data-dismiss="modal" type="submit" class="form-control button-form" name="submit" value="Sign Up">
+                     <input id="style-signup" type="submit" class="sign-up-form form-control button-form" name="submit" value="Sign Up">
                    </fieldset>
                  </form>
                </div> <!-- End of modal body -->
@@ -124,50 +129,45 @@
                        <input type="password" class="form-control" name="credentials[password]">
                      </label>
 
-                     <input id="style-signin" data-dismiss="modal" type="submit" class="form-control button-form" name="submit" value="Sign In">
+                     <input id="style-signin" type="submit" class="form-control button-form" name="submit" value="Sign In">
                    </fieldset>
                  </form>
-
-
-                 <!-- Modal Change Password -->
-                 <button id = "button-password" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalChangePassword" data-whatever="@mdo">Change Password</button>
-
-                 <div class="modal fade" id="modalChangePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                   <div class="modal-dialog" role="document">
-                     <div class="modal-content">
-                       <div class="modal-header">
-                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                         <!--<h4 class="modal-title" id="myModalLabel">Change Password</h4>-->
-                       </div>
-                       <div class="modal-body">
-
-                        <form id="change-password">
-                          <fieldset>
-                            <legend>Change Password</legend>
-                            <label>
-                              Current Password
-                              <input type="password" class="form-control" name="password[old]">
-                            </label><br>
-                            <label>
-                              New Password
-                              <input type="password" class="form-control" name="password[new]">
-                            </label>
-
-                            <input id="style-changepassword" data-dismiss="modal" type="submit"  class="form-control button-form" name="submit" value="Change Password">
-                          </fieldset>
-                        </form>
-
-                      </div> <!-- End of modal body -->
-                    </div> <!-- modal-content -->
-                  </div> <!-- modal-dialog -->
-                 </div> <!-- End of modalChangePassword -->
-
-
                </div> <!-- End of modal body -->
              </div> <!-- modal-content -->
            </div> <!-- modal-dialog -->
          </div> <!-- End of modalSignIn -->
 
+
+         <!-- Modal Change Password -->
+         <div class="modal fade" id="modalChangePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+           <div class="modal-dialog" role="document">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <!--<h4 class="modal-title" id="myModalLabel">Change Password</h4>-->
+               </div>
+               <div class="modal-body">
+
+                <form id="change-password">
+                  <fieldset>
+                    <legend>Change Password</legend>
+                    <label>
+                      Current Password
+                      <input type="password" class="form-control" name="passwords[old]">
+                    </label><br>
+                    <label>
+                      New Password
+                      <input type="password" class="form-control" name="passwords[new]">
+                    </label>
+
+                    <input id="style-changepassword" type="submit"  class="form-control button-form" name="submit" value="Change Password">
+                  </fieldset>
+                </form>
+
+              </div> <!-- End of modal body -->
+            </div> <!-- modal-content -->
+          </div> <!-- modal-dialog -->
+         </div> <!-- End of modalChangePassword -->
 
 
 
@@ -186,7 +186,7 @@
                <form id="sign-out">
                  <fieldset>
                    <legend>Sign Out</legend>
-                   <input id="style-signout" data-dismiss="modal" type="submit" name="submit"  class="form-control button-form" value="Sign Out">
+                   <input id="style-signout" type="submit" name="submit"  class="form-control button-form" value="Sign Out">
                  </fieldset>
                </form>
 
@@ -197,5 +197,5 @@
 
        </div> <!-- container -->
     </div> <!-- jumbotron -->
-  </body>
+  </body> <!-- data-dismiss="modal" -->
 </html>

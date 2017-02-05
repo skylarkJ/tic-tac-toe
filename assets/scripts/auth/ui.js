@@ -5,10 +5,14 @@ const success = (data) => {
   console.log(data);
 };
 
-const failure = (err) => {
+const failure = (error) => {
   // handle failure
-  console.error(err);
+  console.error(error);
 };
+
+$('.sign-up-form').on('submit', function(){
+ $('.sign-up').hide();
+});
 
 module.exports = {
   failure,

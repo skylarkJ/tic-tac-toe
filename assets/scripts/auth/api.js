@@ -3,9 +3,9 @@
 const config = require('../config');
 const store = require('../store');
 
-const signUp = function (data) {
+const signUp = function(data) {
   return $.ajax({
-    url: config.apiOrigin + '/sign-up',
+    url: config.apiOrigin + '/sign-up/',
     method: 'POST',
     data,
   });
@@ -42,7 +42,7 @@ const signOut = function () {
 
 const gameStat = function () {
   return $.ajax({
-    url: config.apiOrigin + '/games?over=true', // will get only games that are already finished
+    url: config.apiOrigin + '/games', // will get only games that are already finished
     method: 'GET',
     headers: {
       Authorization: `Token token=${store.user.token}`,
