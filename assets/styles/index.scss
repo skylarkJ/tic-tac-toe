@@ -107,6 +107,20 @@ div .col-xs-4:hover {
   display: none;
 }
 
+
+.create-button {
+  display: none;
+  background-color: $white;
+  border: 1px solid $color-green;
+  color: $color-green;
+}
+
+.create-button:hover {
+  background-color: $color-green;
+  border: 1px solid $color-green;
+  color: $white;
+}
+
 #style-signup {
   border: 1px solid $color-green;
   font-weight: 500;
@@ -149,18 +163,6 @@ div .col-xs-4:hover {
 
 .game-board {
   display: none;
-}
-
-.create-button {
-  background-color: $white;
-  border: 1px solid $color-green;
-  color: $color-green;
-}
-
-.create-button:hover {
-  background-color: $color-green;
-  border: 1px solid $color-green;
-  color: $white;
 }
 
 #button-play {

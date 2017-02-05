@@ -57,48 +57,6 @@ const checksServerWin = function (cells) {
 
 };
 
-$('#create-game').on('click', function () {
-  $( document.activeElement ).css("background-color", "#00e676");
-  $( document.activeElement ).css("color", "#fff");
-  $('.game-board').show();
-  $('#create-game').hide();
-});
-
-
-
-$('#game-stat').on('click', function () {
-  $('.game-score').show();
-  //$('#game-stat').hide();
-
-
-    if(store.user) {
-
-      api.gameCreate()
-        .then((data) => {
-          gameId = data.game.id;
-        });
-
-      api.gameStat()
-        .then((data) => {
-          let addOne = 0;
-
-
-          for (let i = 0; i < data.games.length; i ++) {
-            let win = checksServerWin(data.games[i].cells);
-            if (store.user.id === data.games[i].player_x.id) {
-              if (win === playerX) {
-                addOne += 1;
-              }
-            }
-
-          }
-          $('.game-score').text("Wins: " + addOne);
-
-        });
-
-    }
-
-});
 
 const boardPaint = function(){
 
@@ -141,8 +99,6 @@ const checkForWinner = function () {
 };
 
 
-
-
 //to check if board is full for draw
 const isBoardFull = function () {
   for (let i = 0; i < boardPainted.length; i++) {
@@ -153,8 +109,34 @@ const isBoardFull = function () {
   return true;
 };
 
+// if game is over, run function to get statistics
+// and turn off board
+const gameOver = function () {
+  $(".box").off("click");
+   $('.game-score').show();
+   api.gameStat()
+     .then((data) => {
+       let addOne = 0;
+
+
+       for (let i = 0; i < data.games.length; i ++) {
+         let win = checksServerWin(data.games[i].cells);
+         if (store.user.id === data.games[i].player_x.id) {
+           if (win === playerX) {
+             addOne += 1;
+           }
+         }
+
+       }
+       $('.game-score').text("Wins: " + addOne);
+
+     });
+};
+
+
+
 //player turn
-$('.box').on('click', function(){
+const playGame = function(){
   let serverData = {
     game: {over: false},
   };
@@ -198,8 +180,12 @@ $('.box').on('click', function(){
     }
     api.gameUpdate(gameId, serverData);
 
+    if (serverData.game.over) {
+      gameOver();
+    }
   }
-});
+
+};
 
 const resetBoard = function () {
   //Empty state of the game
@@ -214,10 +200,30 @@ const resetBoard = function () {
 
 //reset the board
 $('#button-play').on('click', function(){
-  resetBoard();
-  $('#won-messagex').hide();
-  $('#won-messageo').hide();
-  $('#draw-message').hide();
+  api.gameCreate()
+    .then((data) => {
+      gameId = data.game.id;
+        resetBoard();
+      $('.box').on('click',playGame);
+      $('#won-messagex').hide();
+      $('#won-messageo').hide();
+      $('#draw-message').hide();
+    });
+
+});
+
+$('#create-game').on('click', function () {
+  api.gameCreate()
+
+    .then((data) => {
+      gameId = data.game.id;
+      $( document.activeElement ).css("background-color", "#00e676");
+      $( document.activeElement ).css("color", "#fff");
+      $('.box').on('click',playGame);
+      $('.game-board').show();
+      $('#create-game').hide();
+    });
+
 });
 
 module.exports = {
