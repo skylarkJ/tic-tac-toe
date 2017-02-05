@@ -68,7 +68,7 @@ $('#create-game').on('click', function () {
 
 $('#game-stat').on('click', function () {
   $('.game-score').show();
-  $('#game-stat').hide();
+  //$('#game-stat').hide();
 
 
     if(store.user) {
