@@ -30,6 +30,7 @@ const signInSuccess = function () {
   $('.message').text('You are Successfully signed in!').css('color', 'blue');
   $('.message').hide(10000);
   $('#modalSignIn').modal('hide');
+  $('#button-signin-nav').hide();
   $('#button-signup-nav').hide();
   $('.style-button-password').show();
   $('.style-button-signout').show();
@@ -49,7 +50,7 @@ const changePasswordSuccess = function () {
 };
 
 const changePasswordError = function () {
-  $('.message').text('Change password failed!').css('color', 'orange');
+  $('.message').text('Changing password failed!').css('color', 'orange');
   $('#modalChangePassword').modal('hide');
 };
 
@@ -60,6 +61,8 @@ const signOutSuccess = function () {
   $('#modalSignOut').modal('hide').css('color', 'blue');
   $('.create-button').hide();
   $('.style-button-password').hide();
+  $('#button-signin-nav').show();
+  $('#button-signout-nav').hide();
 };
 
 const signOutError = function () {
